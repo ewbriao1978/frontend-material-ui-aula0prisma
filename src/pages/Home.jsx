@@ -5,9 +5,8 @@ import Listar from '../components/Listar';
 const Home = () => {
       const [listaFuncionarios, setListaFuncionarios] = useState([]);
 
-useEffect(() => {
-  // Testando a API
-  async function fetchData() {
+
+async function fetchData() {
     try {
       const funcionarios = await api.listarFuncionarios();
       console.log('Funcionários:', funcionarios);
@@ -17,8 +16,28 @@ useEffect(() => {
     }
   }
 
+
+useEffect(() => {
+  // Testando a API
+
+
+  
+
   fetchData();
-}, []);
+}, [listaFuncionarios]);
+
+async function deleteHandler(id){
+  console.log("Remover funcionário"+id);
+   try{
+     // Chamar a API de remoção
+     api.deletarFuncionario(id);
+     // Atualizar a lista localmente
+     fetchData();
+   }catch(error){
+     console.error('Erro ao deletar funcionário:', error); 
+   }
+
+}
 
 
     return (
@@ -27,7 +46,7 @@ useEffect(() => {
             <h1>Tela principal (Home) </h1>
           
         </div>
-        <Listar lista={listaFuncionarios} />
+        <Listar lista={listaFuncionarios} onDelete={deleteHandler} />
         </>
     );
 };
