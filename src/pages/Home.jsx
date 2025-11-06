@@ -24,7 +24,7 @@ useEffect(() => {
   
 
   fetchData();
-}, [listaFuncionarios]);
+}, []);
 
 async function deleteHandler(id){
   console.log("Remover funcionário"+id);
@@ -32,7 +32,7 @@ async function deleteHandler(id){
      // Chamar a API de remoção
      api.deletarFuncionario(id);
      // Atualizar a lista localmente
-     fetchData();
+     setListaFuncionarios(listaFuncionarios.filter(f=>f.id !== id));
    }catch(error){
      console.error('Erro ao deletar funcionário:', error); 
    }
