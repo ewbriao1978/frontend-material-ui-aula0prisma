@@ -18,12 +18,12 @@ const Edit = () => {
   useEffect(() => {
     async function loadFuncionario(){
       try{
-        const funcionarios = await api.listarFuncionarios();
-        const f = funcionarios.find(item => String(item.id) === String(id));
-        if(f){
-          setNome(f.nome || '');
-          setEmail(f.email || '');
-          setSalario(f.salario || '');
+        const funcionario = await api.mostrarFuncionario(id);
+        console.log('Funcionário carregado para edição:', funcionario);
+        if(funcionario){
+          setNome(funcionario.nome || '');
+          setEmail(funcionario.email || '');
+          setSalario(funcionario.salario || '');
         }
       }catch(err){
         console.error('Erro ao carregar funcionário:', err);
