@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 import Listar from '../components/Listar';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
       const [listaFuncionarios, setListaFuncionarios] = useState([]);
 
+  const navigate = useNavigate();
+
+  function editHandler(id){
+    // Navegar para a página de edição com o id
+    navigate(`/edit/${id}`);
+  }
 
 async function fetchData() {
     try {
@@ -46,7 +53,7 @@ async function deleteHandler(id){
             <h1>Tela principal (Home) </h1>
           
         </div>
-        <Listar lista={listaFuncionarios} onDelete={deleteHandler} />
+        <Listar lista={listaFuncionarios} onDelete={deleteHandler} onEdit={editHandler} />
         </>
     );
 };

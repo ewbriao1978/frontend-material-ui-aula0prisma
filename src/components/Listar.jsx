@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 
 
 
-export default function Listar({lista,onDelete}) {
+export default function Listar({lista,onDelete, onEdit}) {
 
  
 
@@ -37,7 +37,7 @@ export default function Listar({lista,onDelete}) {
               <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right">{row.salario}</TableCell>
               <TableCell align="right">
-                <Button variant="contained">Editar</Button>
+                <Button variant="contained" onClick={() => onEdit ? onEdit(row.id) : null}>Editar</Button>
               </TableCell>
               <TableCell align="right">
                 <Button variant="contained" onClick={()=>onDelete(row.id)}>Remover</Button>
