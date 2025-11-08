@@ -41,8 +41,6 @@ const Edit = () => {
       // Chamar a API de atualização (implementar atualizarFuncionario no serviço)
       if(api.atualizarFuncionario){
         await api.atualizarFuncionario(id, { nome, email, salario });
-      } else if(api.editarFuncionario){
-        await api.editarFuncionario(id, { nome, email, salario });
       } else {
         // fallback: log and continue
         console.warn('Nenhuma função de atualização encontrada em api');
