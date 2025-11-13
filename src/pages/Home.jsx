@@ -27,9 +27,6 @@ async function fetchData() {
 useEffect(() => {
   // Testando a API
 
-
-  
-
   fetchData();
 }, []);
 
